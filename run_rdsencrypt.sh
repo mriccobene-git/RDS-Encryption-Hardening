@@ -7,10 +7,10 @@ function is_installed {
 }
 
 # Clone the repository
-git clone https://github.com/your-username/your-repository-name.git
+git clone https://github.com/mriccobene-git/RDS-Encryption-Hardening.git
 
 # Change to the repository directory
-cd your-repository-name
+cd RDS-Encryption-Hardening
 
 # Check if boto3 is installed, and install it if not
 if is_installed boto3; then
