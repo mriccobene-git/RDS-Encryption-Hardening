@@ -36,4 +36,4 @@ else
 fi
 
 # Run the Python script
-$PYTHON_CMD encrypt_rds_instances.py
+$PYTHON_CMD rdsencrypt.py
