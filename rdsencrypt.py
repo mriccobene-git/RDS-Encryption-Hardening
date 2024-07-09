@@ -62,13 +62,23 @@ def encrypt_rds_instances(instance_ids, region_name, kms_key_id, db_subnet_group
 
 if __name__ == "__main__":
     # Prompt user for input
-    instance_ids = input("Enter the RDS instance IDs (comma-separated): ").split(',')
-    region_name = input("Enter the AWS region: ")
-    kms_key_id = input("Enter the KMS key ID: ")
-    db_subnet_group_name = input("Enter the DB subnet group name: ")
+    parser = argparse.ArgumentParser(description="Encrypt RDS Instances")
+    parser.add_argument('--instance-ids', help="Comma-separated list of RDS instance identifiers")
+    parser.add_argument('--region', help="AWS region")
+    parser.add_argument('--kms-key-id', help="KMS key ID")
+    parser.add_argument('--db-subnet-group-name', help="DB subnet group name")
+    
+    args = parser.parse_args()
+    
+    if not args.instance_ids:
+        instance_ids = input("Enter the RDS instance IDs (comma-separated): ").split(',')
+    else:
+        instance_ids = args.instance_ids.split(',')
+    
+    region_name = args.region or input("Enter the AWS region: ")
+    kms_key_id = args.kms_key_id or input("Enter the KMS key ID: ")
+    db_subnet_group_name = args.db_subnet_group_name or input("Enter the DB subnet group name: ")
 
-    # Strip any extra spaces from the input
     instance_ids = [id.strip() for id in instance_ids]
 
-    # Run the encryption process with user-provided inputs
     encrypt_rds_instances(instance_ids, region_name, kms_key_id, db_subnet_group_name)
