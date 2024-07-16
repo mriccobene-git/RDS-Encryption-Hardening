@@ -5,7 +5,7 @@ This script encrypts Amazon RDS instances that are not already encrypted. It per
 2. Copies the snapshot with encryption using a specified KMS key.
 3. Restores the encrypted snapshot to a new RDS instance.
 ## Prerequisites
-* AWS CLI configured with necessary permissions.
+* AWS CLI configured with necessary AWS permissions.
 * Python 3 Installed
 * boto3 library installed. You can install it using [pip](https://pip.pypa.io/en/stable/).
 
